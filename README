@@ -1,0 +1,27 @@
+NAME: Nilesh Gupta
+EMAIL: ngup@ucla.edu
+ID: 604 489 201
+
+-----
+FILES
+-----
+
+Makefile	...		file to link and build all source & other important files as well as create tarball
+
+README		...		description of all files in lab
+
+lab3a.c 	...		source code for lab3a
+
+ext2_fs.h	...		header taken from lab3a spec that defines structs useful in the interpretation of the ext2 file system
+
+----
+BUGS
+----
+
+If I run the program with the ext2_image, something causes the program to get stuck in an infinite loop. I isolated the bug to the DIRENT code and specifically, the while loop that checks if (l < block_size) where l is the byte offset into the block. I'm still not sure entirely why this is occuring and the time for submission is approaching so I am not able to turn in a completely robust program for this assignment. 
+
+UPDATE: Never mind!!! After spending what seems like forever typing 'gdb lab3a' and making some adjustments to my lab3a.c, the program has stopped infini-looping. 
+
+It seemed the problem was I completely ignored the fact that some nodes have data blocks stored indirectly so I added a get_indirects() function that obtains all remote data blocks and scans those for directory entries and now it's working huzzah!! 
+
+How corect those entries are - now that's for you to decide. 
